@@ -1,0 +1,61 @@
+package org.example;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;Te
+import java.util.List;
+
+public class Amazon_QAJobSearch {
+
+    public static void main(String[] args) throws InterruptedException, AWTException {
+        WebDriver driver= new ChromeDriver();
+        driver.get("https://www.amazon.jobs/en");
+        driver.manage().window().maximize();
+        System.out.println(driver.getTitle());
+        Thread.sleep(2000);
+        WebElement searchTextBox= driver.findElement(By.xpath("(//input[@id='search_typeahead']) [2]"));
+        searchTextBox.click();
+        searchTextBox.sendKeys("Quality Assurance");
+        Thread.sleep(2000);
+        WebElement locationTextBox= driver.findElement(By.xpath("(//input[@id='location-typeahead']) [2]"));
+        locationTextBox.click();
+        locationTextBox.sendKeys("india");
+        System.out.println(driver.findElement(By.xpath("//button[@id='search-button']")).isEnabled());
+        System.out.println(driver.findElement(By.xpath("(//span[@class='button-icon']) [2]")).getLocation().getX());
+        System.out.println(driver.findElement(By.xpath("(//span[@class='button-icon']) [2]")).getLocation().getY());
+        WebElement Click= driver.findElement(By.xpath("//button[@id='search-button']"));
+        Click.click();
+
+        JavascriptExecutor js=(JavascriptExecutor)driver ;
+        js.executeScript("arguments[0].click();", Click);
+//        Actions action= new Actions(driver);
+//        action.click(Click).perform();
+//        Robot robot= new Robot();
+//        robot.mouseMove(1273,269);
+//        Thread.sleep(3000);
+//        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+//        Thread.sleep(4000);
+//        Click.click();
+//        System.out.println("1");
+//        Click.click();
+//        System.out.println("2");
+//        Click.click();
+//        System.out.println("3`");
+//        System.out.println("ABCD");
+////        JavascriptExecutor jse= (JavascriptExecutor)driver;
+////        jse.executeScript("driver.findElement(By.cssSelector(\"button[id='search-button']\")).click();");
+//        robot.keyPress(KeyEvent.VK_ENTER);
+        //Thread.sleep(60000);
+//        List<WebElement> listOfJobs= (List<WebElement>) driver.findElement(By.cssSelector("div[class*='job-tile-lists']"));
+//        System.out.println(listOfJobs);
+
+    }
+}
